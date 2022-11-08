@@ -1,4 +1,4 @@
-define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "models/server/permissionsConstants"], function (
+define("modules/customScript", ["ui.api.v1", "models/server/callConstants", "models/server/permissionsConstants"], function (
     UiApi,
     CallConstants,
     PermissionsConstants
@@ -10,8 +10,8 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
     // IMPORTANT: make sure that the call variable is on the layout tab of the campaign profile, and is NOT read-only
     const contactFieldsToMap = [
       {
-        contactField: 'School',
-        callVariable: 'Caller.School'
+        contactField: "School",
+        callVariable: "Caller.School"
       }
 
     ];
@@ -21,7 +21,7 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
     let customScript = {};
 
     customScript.initialize = function () {
-      UiApi.Logger.info(`custom-script__", "initialize function`);
+      UiApi.Logger.info("custom-script__", "initialize function");
     };
 
     //---------------------------------------------------
@@ -50,14 +50,14 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
       }
 
       const callId = activeTask.id;
-      UiApi.Logger.debug("custom-script__", "onCallState", `CallID: ${callId}`);
+      UiApi.Logger.debug("custom-script__", "onCallState", "CallID: ${callId}");
 
       const callModel = UiApi.Root.Agent(UiApi.Context.AgentId).Call(callId);
       const newState = callModel.get("state");
       const callType = callModel.get("callType");
 
       UiApi.Logger.info(
-        "custom-script__onCallState", `callId: ${callId}, state: ${newState}, callType: ${callType}`
+        "custom-script__onCallState", "callId: ${callId}, state: ${newState}, callType: ${callType}"
       );
 
 
@@ -82,7 +82,7 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
     customScript.mapContactFieldToCav = function (mapping, callModel, callVariables, contactFields) {
       try {
 
-        UiApi.Logger.debug('custom-script__', `starting function mapContactFieldToCav()`, mapping);
+        UiApi.Logger.debug("custom-script__", "starting function mapContactFieldToCav()", mapping);
 
         let cav = this.getCallVariableByName(callVariables, mapping.callVariable);
         let cav_value = callModel.attributes.variables[cav.id];
@@ -90,15 +90,15 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
         let cf = this.getContactFieldByName(contactFields, mapping.contactField);
         let cf_value = callModel.attributes.activeContact.fields[cf.id];
 
-        UiApi.Logger.debug('custom-script__', `ContactField: ${mapping.contactField}: ${cf_value} || CAV: ${mapping.callVariable}: ${cav_value}`);
+        UiApi.Logger.debug("custom-script__", "ContactField: ${mapping.contactField}: ${cf_value} || CAV: ${mapping.callVariable}: ${cav_value}");
 
         if (cf_value && cav_value != cf_value) {
-          UiApi.Logger.debug('custom-script__', `Proceeding with setting CAV! "${cav_value}" -->  "${cf_value}"`);
+          UiApi.Logger.debug("custom-script__", "Proceeding with setting CAV! "${cav_value}" -->  "${cf_value}"");
           callModel.setCallVariable(cav.id, cf_value);
         }
 
       } catch (err) {
-        UiApi.Logger.debug('custom-script__', `Error setting CAV!`, mapping, err);
+        UiApi.Logger.debug("custom-script__", "Error setting CAV!", mapping, err);
       }
 
     };
@@ -134,24 +134,24 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
 
 
 
-  define('workflow/init', ['ui.api.v1', 'modules/customScript'],
+  define("workflow/init", ["ui.api.v1", "modules/customScript"],
     function (UiApi, customScript) {
       return {
         initialize: function () {
           //Place your library initialization code here
-          UiApi.Logger.debug('custom-script__', 'init:workflow:initialize');
+          UiApi.Logger.debug("custom-script__", "init:workflow:initialize");
           customScript.initialize();
         },
 
         onModelLoad: function () {
           //Place your server model subscription code here
-          UiApi.Logger.debug('custom-script__', 'init:workflow:onModelLoad');
+          UiApi.Logger.debug("custom-script__", "init:workflow:onModelLoad");
           customScript.onModelLoad();
         },
 
         onModelUnload: function () {
           //Place your cleanup code here
-          UiApi.Logger.debug('custom-script__', 'init:workflow:onModelUnload');
+          UiApi.Logger.debug("custom-script__", "init:workflow:onModelUnload");
           customScript.onModelUnload();
         }
       };
@@ -159,10 +159,10 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
 
 
 
-  define('3rdparty.bundle', [
-    'ui.api.v1',
-    'handlebars',
-    'workflow/init'
+  define("3rdparty.bundle", [
+    "ui.api.v1",
+    "handlebars",
+    2workflow/init"
 
     //presentations models
 
@@ -175,7 +175,7 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
 
       require.config({
         map: {
-          '*': {
+          "*": {
           }
         }
       });
