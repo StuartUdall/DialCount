@@ -22,7 +22,7 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
     let customScript = {};
 
     customScript.initialize = function () {
-      UiApi.Logger.info(`custom-script__", "initialize function`);
+      UiApi.Logger.info("custom-script__", "initialize function");
     };
 
     //---------------------------------------------------
@@ -51,14 +51,14 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
       }
 
       const callId = activeTask.id;
-      UiApi.Logger.debug("custom-script__", "onCallState", `CallID: ${callId}`);
+      UiApi.Logger.debug("custom-script__", "onCallState", "CallID: ${callId}");
 
       const callModel = UiApi.Root.Agent(UiApi.Context.AgentId).Call(callId);
       const newState = callModel.get("state");
       const callType = callModel.get("callType");
 
       UiApi.Logger.info(
-        "custom-script__onCallState", `callId: ${callId}, state: ${newState}, callType: ${callType}`
+        "custom-script__onCallState", "callId: ${callId}, state: ${newState}, callType: ${callType}"
       );
 
 
@@ -83,7 +83,7 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
     customScript.mapContactFieldToCav = function (mapping, callModel, callVariables, contactFields) {
       try {
 
-        UiApi.Logger.debug('custom-script__', `starting function mapContactFieldToCav()`, mapping);
+        UiApi.Logger.debug('custom-script__', "starting function mapContactFieldToCav()", mapping);
 
         let cav = this.getCallVariableByName(callVariables, mapping.callVariable);
         let cav_value = callModel.attributes.variables[cav.id];
@@ -91,15 +91,15 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
         let cf = this.getContactFieldByName(contactFields, mapping.contactField);
         let cf_value = callModel.attributes.activeContact.fields[cf.id];
 
-        UiApi.Logger.debug('custom-script__', `ContactField: ${mapping.contactField}: ${cf_value} || CAV: ${mapping.callVariable}: ${cav_value}`);
+        UiApi.Logger.debug('custom-script__', "ContactField: ${mapping.contactField}: ${cf_value} || CAV: ${mapping.callVariable}: ${cav_value}");
 
         if (cf_value && cav_value != cf_value) {
-          UiApi.Logger.debug('custom-script__', `Proceeding with setting CAV! "${cav_value}" -->  "${cf_value}"`);
+          UiApi.Logger.debug('custom-script__', "Proceeding with setting CAV! "${cav_value}" -->  "${cf_value}"");
           callModel.setCallVariable(cav.id, cf_value);
         }
 
       } catch (err) {
-        UiApi.Logger.debug('custom-script__', `Error setting CAV!`, mapping, err);
+        UiApi.Logger.debug('custom-script__', "Error setting CAV!", mapping, err);
       }
 
     };
