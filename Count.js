@@ -61,7 +61,7 @@ define("modules/customScript", ["ui.api.v1", "models/server/callConstants", "mod
       );
 
 
-      if (newState === 'TALKING') {
+      if (newState === "TALKING") {
 
         if (contactFieldsToMap) {
 
@@ -162,7 +162,7 @@ define("modules/customScript", ["ui.api.v1", "models/server/callConstants", "mod
   define("3rdparty.bundle", [
     "ui.api.v1",
     "handlebars",
-    2workflow/init"
+    "workflow/init"
 
     //presentations models
 
