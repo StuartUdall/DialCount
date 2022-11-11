@@ -10,7 +10,7 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
     // IMPORTANT: make sure that the call variable is on the layout tab of the campaign profile, and is NOT read-only
     const contactFieldsToMap = [
       {
-        contactField: 'accountNum',
+        contactField: 'Customer.accountNum',
         callVariable: 'Reporting.AccountNum'
       }
 
