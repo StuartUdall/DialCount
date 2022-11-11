@@ -10,8 +10,8 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
     // IMPORTANT: make sure that the call variable is on the layout tab of the campaign profile, and is NOT read-only
     const contactFieldsToMap = [
       {
-        contactField: 'Customer.accountNum',
-        callVariable: 'Reporting.AccountNum'
+        contactField: 'Campaign Attempts',
+        callVariable: 'WES.Dial Attempts'
       }
 
     ];
@@ -22,7 +22,7 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
     let customScript = {};
 
     customScript.initialize = function () {
-      UiApi.Logger.info("custom-script__", "initialize");
+      UiApi.Logger.info('custom-script__', 'initialize v1.0.1');
     };
 
     //---------------------------------------------------
@@ -132,34 +132,28 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
 
     return customScript;
   });
-
-
-
   define('workflow/init', ['ui.api.v1', 'modules/customScript'],
     function (UiApi, customScript) {
       return {
         initialize: function () {
           //Place your library initialization code here
-          UiApi.Logger.debug('custom-script__', 'init:workflow:initialize');
+          UiApi.Logger.debug('init:workflow:initialize');
           customScript.initialize();
         },
 
         onModelLoad: function () {
           //Place your server model subscription code here
-          UiApi.Logger.debug('custom-script__', 'init:workflow:onModelLoad');
+          UiApi.Logger.debug('init:workflow:onModelLoad');
           customScript.onModelLoad();
         },
 
         onModelUnload: function () {
           //Place your cleanup code here
-          UiApi.Logger.debug('custom-script__', 'init:workflow:onModelUnload');
+          UiApi.Logger.debug('init:workflow:onModelUnload');
           customScript.onModelUnload();
         }
       };
     });
-
-
-
   define('3rdparty.bundle', [
     'ui.api.v1',
     'handlebars',
@@ -180,7 +174,6 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
           }
         }
       });
-
       Init.initialize();
       UiApi.vent.on(UiApi.PresModelEvents.WfMainOnModelLoad, function () {
         Init.onModelLoad();
