@@ -22,7 +22,7 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
     let customScript = {};
 
     customScript.initialize = function () {
-      UiApi.Logger.info('custom-script__', 'initialize v1.0.1');
+      UiApi.Logger.info("custom-script__", "initialize");
     };
 
     //---------------------------------------------------
