@@ -62,7 +62,7 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
       );
 
 
-      if (newState === 'PREVIEW') {
+      if (newState === 'TALKING') {
 
         if (contactFieldsToMap) {
 
