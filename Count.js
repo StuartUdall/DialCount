@@ -22,7 +22,7 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
     let customScript = {};
 
     customScript.initialize = function () {
-      UiApi.Logger.info(`custom-script__", "initialize function`);
+      UiApi.Logger.info("custom-script__", "initialize");
     };
 
     //---------------------------------------------------
@@ -62,7 +62,7 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
       );
 
 
-      if (newState === 'TALKING') {
+      if (newState === 'PREVIEW') {
 
         if (contactFieldsToMap) {
 
