@@ -1,7 +1,7 @@
 define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "models/server/permissionsConstants"], function (
     UiApi,
-    callConstants,
-    permissionsConstants
+    CallConstants,
+    PermissionsConstants
   ) {
 
 
@@ -22,12 +22,12 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
     let customScript = {};
 
     customScript.initialize = function () {
-      UiApi.Logger.info('custom-script__', 'initialize');
+      UiApi.Logger.info(`custom-script__", "initialize function`);
     };
 
     //---------------------------------------------------
     customScript.onModelLoad = function () {
-      UiApi.Logger.info(custom-script__', 'onModelLoad');
+      UiApi.Logger.info("custom-script__", "onModelLoad");
 
       const agent = UiApi.Root.Agent(UiApi.Context.AgentId);
 
@@ -38,7 +38,7 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
 
     //---------------------------------------------------
     customScript.onModelUnload = function () {
-      UiApi.Logger.debug('custom-script__', 'onModelUnload');
+      UiApi.Logger.debug("custom-script__", "onModelUnload");
     };
 
 
@@ -51,7 +51,7 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
       }
 
       const callId = activeTask.id;
-      UiApi.Logger.debug('custom-script__', 'onCallState', `CallID: ${callId}`);
+      UiApi.Logger.debug("custom-script__", "onCallState", `CallID: ${callId}`);
 
       const callModel = UiApi.Root.Agent(UiApi.Context.AgentId).Call(callId);
       const newState = callModel.get("state");
