@@ -1,7 +1,7 @@
 define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "models/server/permissionsConstants"], function (
     UiApi,
-    CallConstants,
-    PermissionsConstants
+    callConstants,
+    permissionsConstants
   ) {
 
 
