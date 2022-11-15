@@ -1,0 +1,33 @@
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+.smsButton {
+  color: #1589ee !important;
+}
+.smsButtonDisabled {
+  color: darkgray !important;
+  background-color: lightgray !important;
+}
+.smsCancelButton {
+  color: red !important;
+}
+
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+.smsButton {
+  color: #1589ee !important;
+}
+.smsButtonDisabled {
+  color: darkgray !important;
+  background-color: lightgray !important;
+}
+.smsCancelButton {
+  color: red !important;
+}
