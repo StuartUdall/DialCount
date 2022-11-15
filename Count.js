@@ -172,7 +172,7 @@ define('modules/customScript', ["ui.api.v1", "models/server/callConstants", "mod
   ],
     function (UiApi, Handlebars, Init) {
 
-      UiApi.config({});
+     //UiApi.config({});
 
       require.config({
         map: {
